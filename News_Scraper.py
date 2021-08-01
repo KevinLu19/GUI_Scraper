@@ -13,6 +13,7 @@ class AnimeNews:
         self.soup = BeautifulSoup(self.get_raw_html_content, "html5lib")
         self.html_prettify = self.soup.prettify()
         self.individual_anime_news_block = self.soup.find("div", attrs = {"class": "news-list mt16 mr8"})
+        self.individual_anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
         # self.individual_anime_news_block = self.soup.find("p", attrs = {"class": "title"})
 
         # self.individual_anime_news_cell()
@@ -48,7 +49,6 @@ class AnimeNews:
         # Prints latest anime news.
         for item in deque_first_entry_of_list:
             print (item)
-            return item
             
         # self.get_deque_data(deque_first_entry_of_list)
 
@@ -56,6 +56,7 @@ class AnimeNews:
         # self.print_program_asleep()
         # self.individual_anime_news_cell()
 
+        return deque_first_entry_of_list
 
     def list_mapping_into_one_list_entry(self, list1, list2, list3):
         return list(map(lambda x,y,z: [x,y,z], list1, list2, list3))
@@ -69,6 +70,10 @@ class AnimeNews:
         for item in deque_list:
             return item
 
+    def get_anime_image(self):
+
+        return self.individual_anime_news_image_src.find("img")["src"]
+
     def print_program_asleep(self):
         # print("---------------------------------------------------------------")
         # time.sleep(3600)
@@ -76,3 +81,4 @@ class AnimeNews:
 
 if __name__ == "__main__":
     news = AnimeNews()
+    news.get_anime_image()
