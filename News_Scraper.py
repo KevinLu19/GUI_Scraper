@@ -15,11 +15,8 @@ class AnimeNews:
         self.individual_anime_news_block = self.soup.find("div", attrs = {"class": "news-list mt16 mr8"})
         # self.individual_anime_news_block = self.soup.find("p", attrs = {"class": "title"})
 
-        self.individual_anime_news_cell()
-        self.all_anime_news_list = []
+        # self.individual_anime_news_cell()
         
-        self.data_scraped_flag = None
-
     def individual_anime_news_cell(self):
         # Lists to store anime url, title, and the text of scraped data.
         anime_href = []
@@ -46,23 +43,17 @@ class AnimeNews:
 
         one_anime_list = self.list_mapping_into_one_list_entry(anime_href, news_title, news_body)
 
-        copy_of_old_anime_list = one_anime_list.copy()
-
-        if len(one_anime_list) < 0:
-            deque_first_entry_of_list = self.list_entry_dequeue(one_anime_list)
-
-        else:
-            self.individual_anime_news_cell()
-
-        # deque_first_entry_of_list = self.list_entry_dequeue(one_anime_list)
+        deque_first_entry_of_list = self.list_entry_dequeue(one_anime_list)
 
         # Prints latest anime news.
         for item in deque_first_entry_of_list:
             print (item)
-        
-            self.data_scraped_flag = True
+            return item
+            
+        # self.get_deque_data(deque_first_entry_of_list)
 
-        self.print_program_asleep()
+
+        # self.print_program_asleep()
         # self.individual_anime_news_cell()
 
 
@@ -74,14 +65,14 @@ class AnimeNews:
          
         return convert_to_queue.popleft()
 
-    def get_scraped_flag(self):
-        return self.data_scraped_flag
-    
+    def get_deque_data(self, deque_list):
+        for item in deque_list:
+            return item
+
     def print_program_asleep(self):
-        print("-------")
+        # print("---------------------------------------------------------------")
         # time.sleep(3600)
-        time.sleep(5)
-        print("-------")
+        time.sleep(60)
 
 if __name__ == "__main__":
     news = AnimeNews()

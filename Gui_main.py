@@ -1,6 +1,6 @@
-import tkinter as tk
-import tkinter.ttk
-from tkinter import ttk 
+import tkinter as ttk
+from tkinter import font
+from tkinter.constants import LEFT
 from ttkthemes import ThemedTk
 
 import News_Scraper
@@ -34,17 +34,51 @@ import News_Scraper
 #     app = AnimeNews(master=root)
 #     app.mainloop()
 
-# anime_news = News_Scraper.AnimeNews()
+def label_frame_template(*args):
+    label_frame = ttk.LabelFrame(window, text=args)
+    return label_frame
+
+def populate_labels():
+    anime_news_obj = News_Scraper.AnimeNews()
+    news = anime_news_obj.individual_anime_news_cell()
+
+    anime_news_title.config(text=news)
 
 window = ThemedTk(theme="arc")
-ttk.Button(window, text="Quit", command=window.destroy).pack()
+# window = ttk.Tk()
+window.geometry("400x500")
 
-example_text = "Anime title: Random Anime Title Goes Here"
+# label_frame = label_frame_template()
+# # labelframe = ttk.LabelFrame(window, text="Example Frame")
+# # labelframe.pack(fill="both", expand="yes", padx=10, pady=10)
+# label_frame.pack(fill="both", expand="yes", padx=10, pady=10)
 
-labelframe = tkinter.LabelFrame(window, text="Example Frame")
-labelframe.pack(fill="both", expand="yes")
- 
-left = tkinter.Label(labelframe, text=example_text, bg="#d9b6ef")
-left.pack()
+anime_news_frame = ttk.LabelFrame(window)
+anime_news_frame.pack()
+
+anime_news_title = ttk.Label(window,font=("Calibri Bold", 12))
+anime_news_title.pack()
+
+
+# anime_news_body_text = ttk.Label(window, font=("Calibiri", 18))
+# anime_news_body_text.grid(row=1, padx=50)
+
+# example_anime_item = ttk.Label(label_frame, text="Anime News Title Goes here\n")
+# example_anime_item.pack()
+
+# exampleanime_2 = ttk.Label(label_frame, text="Anime News Body\n")
+# exampleanime_2.pack(side=LEFT)
+
+
+
+
+# label_frame2 = label_frame_template()
+# # label_frame2.pack(fill="both", expand="yes", padx=10, pady=10)
+# label_frame2.grid(row=0, sticky="N", padx= 10)
+
+# example_anime_item = ttk.Label(label_frame2, font=("Calibri", 20) ,text="Anime News Title Goes here")
+# example_anime_item.grid(row= 0)
+
+populate_labels()
 
 window.mainloop()
