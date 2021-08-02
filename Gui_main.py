@@ -1,7 +1,7 @@
-from tkinter.constants import BOTTOM, CENTER, LEFT, N, TOP, W
+from tkinter.constants import BOTTOM, CENTER, DISABLED, LEFT, N, TOP, W
 from ttkthemes import ThemedTk
 from PIL import Image, ImageTk
-from tkinter import ttk
+from tkinter import BooleanVar, ttk
 
 import border_frame_data
 import tkinter as tk
@@ -64,7 +64,11 @@ def populate_labels():
 
     anime_news_url.config(text=news[0])
     anime_news_title.config(text=news[1])
-    anime_news_body.config(text=news[2])
+    # anime_news_body.config(text=news[2])
+    anime_news_body.insert("end", news[2])
+    # Makes tk.text read only.
+    anime_news_body.config(state=DISABLED)
+
 
     # Displaying Image Label.
     anime_news_image = tk.Label(anime_news_frame ,image=image_photo)
@@ -85,6 +89,7 @@ window = ThemedTk(theme="arc")
 window.geometry("400x700")
 window.title("Anime News")
 window.configure(bg="white")
+window.iconbitmap("favicon.ico")
 
 style = ttk.Style()
 
@@ -109,9 +114,11 @@ anime_news_url.pack(side=TOP, anchor=N, pady=10)
 anime_news_title = tk.Label(anime_news_frame,font=("Calibri Bold", 12), bg="white")
 anime_news_title.pack(side=TOP, pady=10, padx=8)
 
-number_of_screen_unit = 400
-anime_news_body = tk.Label(anime_news_frame, font=("Calibri Bold", 10), wraplength=number_of_screen_unit, bg="white")
-anime_news_body.pack(side=BOTTOM, pady=10, padx=8)
+number_of_screen_unit = 350
+# anime_news_body = tk.Label(anime_news_frame, font=("Calibri Bold", 10), wraplength=number_of_screen_unit, bg="white")
+anime_news_body = tk.Text(anime_news_frame, font=("Calibri Bold", 10), wrap="word", highlightthickness=0, borderwidth=0, height=10)
+#anime_news_body.pack(side=BOTTOM, pady=10, padx=8)
+anime_news_body.pack(side=BOTTOM, expand=True)
 
 populate_labels()
 
