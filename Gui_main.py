@@ -1,7 +1,7 @@
-from tkinter.constants import BOTTOM, CENTER, DISABLED, LEFT, N, TOP, W
+from tkinter.constants import BOTTOM, DISABLED, LEFT, N, TOP, W
 from ttkthemes import ThemedTk
 from PIL import Image, ImageTk
-from tkinter import BooleanVar, ttk
+from tkinter import ttk
 
 import border_frame_data
 import tkinter as tk
@@ -9,6 +9,8 @@ import News_Scraper
 import webbrowser
 import urllib
 import io
+import time
+import selenium_main
 
 # Turning image into byte in order to be used via ImageTK.
 def get_image_byte_io(image):
@@ -30,8 +32,8 @@ def populate_labels(anime_news_url, anime_news_title, anime_news_body, anime_new
 
     image_photo = get_image_byte_io(news_image)
 
-    print ("-------")
-    print (news)
+    # print ("-------")
+    # print (news)
 
     anime_news_url.config(text=news[0])
     # anime_news_title.config(text=news[1])
@@ -66,6 +68,43 @@ def template_frame_widget(frame_style, padding, frame_padx, frame_pady):
 
     return created_template
 
+def template_news_url(frame):
+    # # Clickable link label.
+    # anime_news_url = tk.Label(anime_news_frame, font=("Calibri Bold", 12), fg="blue", cursor="hand2", bg="white")
+
+    anime_news_url = tk.Label(frame, font=("Calibri Bold", 12), fg="blue", cursor="hand2", bg="white")
+    anime_news_url.bind("<Button-1>",lambda event: webbrowser.open(anime_news_url.cget("text")))
+    anime_news_url.pack(side=TOP, anchor=N, pady=10)
+
+    return anime_news_url
+
+
+def template_news_title(frame):
+    anime_news_title = tk.Text(frame, font=("Calibri Bold", 12), wrap="word", highlightthickness=0, borderwidth=0, height=1, bg="white")
+    anime_news_title.pack(side=TOP, pady=10, padx=8)
+
+    return anime_news_title
+
+def template_news_body(frame):
+    anime_news_body = tk.Text(frame, font=("Calibri Bold", 10), wrap="word", highlightthickness=0, borderwidth=0, height=10)
+    anime_news_body.pack(side=BOTTOM, expand=True)
+
+    return anime_news_body
+
+def refresh_scrape():
+    anime_news_obj = News_Scraper.AnimeNews()
+    
+    get_new_frame = template_frame_widget("RoundedFrame", 10, 15, 30)
+
+    anime_news_url = template_news_url(get_new_frame)
+    anime_news_title = tk.Text(get_new_frame, font=("Calibri Bold", 12), wrap="word", highlightthickness=0, borderwidth=0, height=1, bg="white")
+    anime_news_title.pack(side=TOP, pady=10, padx=8)
+
+    anime_news_body = tk.Text(get_new_frame, font=("Calibri Bold", 10), wrap="word", highlightthickness=0, borderwidth=0, height=10)
+    anime_news_body.pack(side=BOTTOM, expand=True)
+
+    populate_labels(anime_news_url, anime_news_title, anime_news_body, get_new_frame)
+
 def main():
     window = ThemedTk(theme="arc")
     window.geometry("400x700")
@@ -86,27 +125,26 @@ def main():
     style.layout("RoundedFrame",
                 [("RoundedFrame", {"sticky": "nsew"})])
 
-    # anime_news_frame = ttk.Frame(style="RoundedFrame", padding=10)
-    # anime_news_frame.pack(padx=15, pady=30)
-
     anime_news_frame = template_frame_widget("RoundedFrame", 10, 15, 30)
 
     # Clickable link label.
-    anime_news_url = tk.Label(anime_news_frame, font=("Calibri Bold", 12), fg="blue", cursor="hand2", bg="white")
-    anime_news_url.bind("<Button-1>",lambda event: webbrowser.open(anime_news_url.cget("text")))
-    anime_news_url.pack(side=TOP, anchor=N, pady=10)
+    # anime_news_url = tk.Label(anime_news_frame, font=("Calibri Bold", 12), fg="blue", cursor="hand2", bg="white")
+    # anime_news_url.bind("<Button-1>",lambda event: webbrowser.open(anime_news_url.cget("text")))
+    # anime_news_url.pack(side=TOP, anchor=N, pady=10)
 
-    # anime_news_title = tk.Label(anime_news_frame,font=("Calibri Bold", 12), bg="white")
     anime_news_title = tk.Text(anime_news_frame, font=("Calibri Bold", 12), wrap="word", highlightthickness=0, borderwidth=0, height=1, bg="white")
     anime_news_title.pack(side=TOP, pady=10, padx=8)
 
-    # number_of_screen_unit = 350
-    # anime_news_body = tk.Label(anime_news_frame, font=("Calibri Bold", 10), wraplength=number_of_screen_unit, bg="white")
     anime_news_body = tk.Text(anime_news_frame, font=("Calibri Bold", 10), wrap="word", highlightthickness=0, borderwidth=0, height=10)
-    #anime_news_body.pack(side=BOTTOM, pady=10, padx=8)
     anime_news_body.pack(side=BOTTOM, expand=True)
 
+    anime_news_url = template_news_url(anime_news_frame)
+    # anime_news_title = template_news_url(anime_news_frame)
+    # anime_news_body = template_news_url(anime_news_frame)
+
     populate_labels(anime_news_url, anime_news_title, anime_news_body, anime_news_frame)
+    
+    # Possible solution: Add while True loop to force it to re-run the program.
 
     window.mainloop()
 

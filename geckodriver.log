@@ -1,0 +1,112 @@
+1629126760117	geckodriver	INFO	Listening on 127.0.0.1:59432
+1629126763194	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileKFHAbP"
+1629126763668	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileKFHAbP\\search.json.mozlz4", (void 0)))
+1629126766375	Marionette	INFO	Listening on port 59440
+1629126766892	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1629126772186	Marionette	INFO	Stopped listening on port 59440
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1629232174006	geckodriver	INFO	Listening on 127.0.0.1:62280
+1629232177092	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofile3nW806"
+1629232177398	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofile3nW806\\search.json.mozlz4", (void 0)))
+1629232179393	Marionette	INFO	Listening on port 62288
+1629232179772	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1629232185759	Marionette	INFO	Stopped listening on port 62288
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+tte	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofilevwQleu\\search.json.mozlz4", (void 0)))
+1629232184008	Marionette	INFO	Listening on port 62345
+1629232184439	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+Exiting due to channel error.
+1629311506778	geckodriver	INFO	Listening on 127.0.0.1:53648
+1629311509871	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileeq2HYW"
+1629311510226	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileeq2HYW\\search.json.mozlz4", (void 0)))
+1629311512621	Marionette	INFO	Listening on port 53656
+1629311513079	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1629311520821	Marionette	INFO	Stopped listening on port 53656
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1629311541261	geckodriver	INFO	Listening on 127.0.0.1:53708
+1629311544350	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofilesw95HR"
+1629311544688	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofilesw95HR\\search.json.mozlz4", (void 0)))
+1629311546979	Marionette	INFO	Listening on port 53716
+1629311547075	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1629311551060	Marionette	INFO	Stopped listening on port 53716
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 31772, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1629377749741	geckodriver	INFO	Listening on 127.0.0.1:57154
+1629377752801	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileVxTzXO"
+1629377753236	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileVxTzXO\\search.json.mozlz4", (void 0)))
+1629377756057	Marionette	INFO	Listening on port 57162
+1629377756498	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1629377759412	Marionette	INFO	Stopped listening on port 57162
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1629379181881	geckodriver	INFO	Listening on 127.0.0.1:50798
+1629379184981	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileNLmtwx"
+1629379185387	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileNLmtwx\\search.json.mozlz4", (void 0)))
+1629379187805	Marionette	INFO	Listening on port 50806
+1629379188159	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://apps.sascdn.com/rtb/transparency/handler/st.min.html?%7b%22bid%22%3a%22377846201740408564%22%2c%22adomain%22%3a%22www.alchemystars.com%22%2c%22page%22%3a%221362554%22%2c%22format%22%3a%2299451%22%2c%22crid%22%3a%221608121639%22%2c%22dsp%22%3a%2232%22%2c%22buyer%22%3a%2269150%22%2c%22cid%22%3a%221608120141%22%2c%22adid%22%3a%2251228539%22%2c%22hash%22%3a%22-6595717503671350569%22%7d, line 1: SecurityError: The operation is insecure.
+JavaScript error: https://apps.sascdn.com/rtb/transparency/handler/st.min.html?%7b%22bid%22%3a%22388542250855424656%22%2c%22adomain%22%3a%22www.alchemystars.com%22%2c%22page%22%3a%221362554%22%2c%22format%22%3a%2299452%22%2c%22crid%22%3a%221608121534%22%2c%22dsp%22%3a%2232%22%2c%22buyer%22%3a%2269150%22%2c%22cid%22%3a%221608120141%22%2c%22adid%22%3a%2251228538%22%2c%22hash%22%3a%22-4179769879595118264%22%7d, line 1: SecurityError: The operation is insecure.
+1629379199066	Marionette	INFO	Stopped listening on port 50806
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1629379226160	geckodriver	INFO	Listening on 127.0.0.1:50941
+1629379229231	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileM9oVf8"
+1629379229586	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofileM9oVf8\\search.json.mozlz4", (void 0)))
+1629379231858	Marionette	INFO	Listening on port 50950
+1629379231896	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1629379236128	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=, line 1: SyntaxError: illegal character U+0001
+1629379236144	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'loading'.
+JavaScript error: https://apps.sascdn.com/rtb/transparency/handler/st.min.html?%7b%22bid%22%3a%22377001776813097201%22%2c%22adomain%22%3a%22www.alchemystars.com%22%2c%22page%22%3a%221362554%22%2c%22format%22%3a%2299452%22%2c%22crid%22%3a%221608121632%22%2c%22dsp%22%3a%2232%22%2c%22buyer%22%3a%2269150%22%2c%22cid%22%3a%221608120141%22%2c%22adid%22%3a%2251228531%22%2c%22hash%22%3a%22-9155111487960695442%22%7d, line 1: SecurityError: The operation is insecure.
+1629379246139	Marionette	INFO	Stopped listening on port 50950
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1629379289306	geckodriver	INFO	Listening on 127.0.0.1:59795
+1629379292397	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofile5i3ELu"
+1629379292770	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Kevin\\AppData\\Local\\Temp\\rust_mozprofile5i3ELu\\search.json.mozlz4", (void 0)))
+1629379295043	Marionette	INFO	Listening on port 59803
+1629379295087	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://apps.sascdn.com/rtb/transparency/handler/st.min.html?%7b%22bid%22%3a%22379253576630951655%22%2c%22adomain%22%3a%22www.alchemystars.com%22%2c%22page%22%3a%221362554%22%2c%22format%22%3a%2299452%22%2c%22crid%22%3a%221608121551%22%2c%22dsp%22%3a%2232%22%2c%22buyer%22%3a%2269150%22%2c%22cid%22%3a%221608120141%22%2c%22adid%22%3a%2251228520%22%2c%22hash%22%3a%22-4965254846728635762%22%7d, line 1: SecurityError: The operation is insecure.
+1629379304944	Marionette	INFO	Stopped listening on port 59803
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: resource://devtools/client/jsonview/Sniffer.jsm, line 56: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIChannel.contentType]
+JavaScript error: https://www.googletagmanager.com/gtm.js?id=GTM-WL4QW3G, line 67: NS_ERROR_NOT_INITIALIZED: 

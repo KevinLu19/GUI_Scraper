@@ -77,7 +77,11 @@ class AnimeNews:
     def print_program_asleep(self):
         # print("---------------------------------------------------------------")
         # time.sleep(3600)
-        time.sleep(60)
+        time.sleep(30)
+
+        print ("Program just woke up and restarting program.")
+        print ("---------------------")
+        self.individual_anime_news_cell()
 
 if __name__ == "__main__":
     news = AnimeNews()
