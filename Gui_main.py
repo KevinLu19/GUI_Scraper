@@ -26,7 +26,8 @@ def get_image_byte_io(image):
 
 def populate_labels(anime_news_url, anime_news_title, anime_news_body, anime_news_frame):
 
-    anime_news_obj = News_Scraper.AnimeNews()
+    # anime_news_obj = News_Scraper.AnimeNews()
+    anime_news_obj = selenium_main.SeleniumMain()
     news = anime_news_obj.individual_anime_news_cell()
     news_image = anime_news_obj.get_anime_image()
 
@@ -50,6 +51,8 @@ def populate_labels(anime_news_url, anime_news_title, anime_news_body, anime_new
     anime_news_image = tk.Label(anime_news_frame ,image=image_photo)
     anime_news_image.image = image_photo
     anime_news_image.pack(side=LEFT, anchor=W, padx=10)
+
+    anime_news_obj.selenium_page_refresher()
 
 # Taken from: https://stackoverflow.com/questions/51425633/tkinter-how-to-make-a-rounded-corner-text-widget
 def rounded_rect(canvas, x, y, w, h, c):

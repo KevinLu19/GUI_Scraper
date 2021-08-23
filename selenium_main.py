@@ -4,46 +4,98 @@ from bs4 import BeautifulSoup
 
 import News_Scraper
 import time
-import requests
+import collections
 
 class SeleniumMain:
-    def selenium_main(self):
+    def __init__(self):
         options = Options()
-        options.set_headless = True
+        options.headless = True
+
+        self.driver = webdriver.Firefox(options=options, executable_path="geckodriver.exe")
+        self.driver.get("https://myanimelist.net/news")
+
+        get_raw_html_content = self.driver.page_source
+        self.soup = BeautifulSoup(get_raw_html_content, "html.parser")
+
+        self.anime_news_block = self.soup.find("div", attrs={"class": "news-list mt16 mr8"})
+        self.anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
+
+    # def selenium_main(self):
+    #     options = Options()
+    #     options.set_headless = True
         
-        driver = webdriver.Firefox(options=options, executable_path="geckodriver.exe")
-        driver.get("https://myanimelist.net/news")
+    #     driver = webdriver.Firefox(options=options, executable_path="geckodriver.exe")
+    #     driver.get("https://myanimelist.net/news")
 
-        get_raw_html_content = driver.page_source
+    #     get_raw_html_content = driver.page_source
+    #     self.soup = BeautifulSoup(get_raw_html_content, "html.parser")
 
-        # soup = BeautifulSoup(get_raw_html_content, "html5lib")
-        soup = BeautifulSoup(get_raw_html_content, "html.parser")
+    #     self.anime_news_block = self.soup.find("div", attrs={"class": "news-list mt16 mr8"})
+    #     self.anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
 
-        # self.individual_anime_news_block = self.soup.find("div", attrs = {"class": "news-list mt16 mr8"})
-        # self.individual_anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
+    #     self.individual_anime_news_cell()
+    #     self.get_anime_image()
 
-        anime_news_block = soup.find("div", attrs={"class": "news-list mt16 mr8"})
-        anime_news_image_src = soup.find("a", attrs= {"class": "image-link"})
+    def individual_anime_news_cell(self):
+        # Lists to store anime url, title, and the text of scraped data.
+        anime_href = []
+        news_title = []
+        news_body = []
 
-        # self.news_scrape_obj = News_Scraper.AnimeNews(anime_news_block, anime_news_image_src, soup)
-        self.news_scrape_obj = News_Scraper.AnimeNews()
-        self.news_scrape_obj.selenium_data(anime_news_block, anime_news_image_src, soup)
+        for item in self.anime_news_block.find_all("p", attrs = {"class" : "title"}):
+            # Gets the URL from news
+            url_of_anime_news = item.find("a")["href"]
+            # Gets the title of the news
+            title_of_anime_news = item.find("a").contents
 
-        if driver:
-            driver.quit()
+            for title in title_of_anime_news:
+                new_title_of_anime_news = title
 
-        # self.selenium_page_refresher(self.driver)
+            anime_href.append(url_of_anime_news)
+            news_title.append(new_title_of_anime_news)
+
+        for item in self.soup.find_all("div", attrs = {"class": "text"}):
+            text_body_of_news = item.text
+            news_body.append(text_body_of_news)
+
+        # print(self.list_mapping_into_one_list_entry(url_of_anime_news, new_title_of_anime_news, news_body))
+
+        one_anime_list = self.list_mapping_into_one_list_entry(anime_href, news_title, news_body)
+
+        deque_first_entry_of_list = self.list_entry_dequeue(one_anime_list)
+
+        # Prints latest anime news.
+        for item in deque_first_entry_of_list:
+            print (item)
+            
+        # self.get_deque_data(deque_first_entry_of_list)
+
+        # self.print_program_asleep()
+        # self.individual_anime_news_cell()
+
+        return deque_first_entry_of_list
+
+    def list_mapping_into_one_list_entry(self, list1, list2, list3):
+        return list(map(lambda x,y,z: [x,y,z], list1, list2, list3))
         
-    # Copy the breakdown of individual news cell code onto here. That way, removes the headache of trying to pass data from one file to another while file c gives constant errors. 
-    # First make a git commit.
+    def list_entry_dequeue(self, anime_list):
+        convert_to_queue = collections.deque(anime_list)
+         
+        return convert_to_queue.popleft()
 
-    def selenium_page_refresher(self, driver):
-        if driver:
+    def get_deque_data(self, deque_list):
+        for item in deque_list:
+            return item
+
+    def get_anime_image(self):
+
+        return self.anime_news_image_src.find("img")["src"]
+
+    def selenium_page_refresher(self):
+        if self.driver:
             time.sleep(5)
-            driver.refresh()
+            self.driver.refresh()
             print("URL Refreshed.")
-        
-        driver.quit()
 
 if __name__ == "__main__":
     sel_obj = SeleniumMain()
