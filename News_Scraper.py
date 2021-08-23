@@ -1,12 +1,13 @@
 import requests
 import collections
 import time
+import selenium_main
 # import Notifier
 
 from bs4 import BeautifulSoup
 
 class AnimeNews:
-    def __init__(self):
+    def __init__(self, news_block, news_image, soup):
         self.url = "https://myanimelist.net/news"
         self.request = requests.get(self.url)
         self.get_raw_html_content = self.request.content
@@ -14,10 +15,18 @@ class AnimeNews:
         self.html_prettify = self.soup.prettify()
         self.individual_anime_news_block = self.soup.find("div", attrs = {"class": "news-list mt16 mr8"})
         self.individual_anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
-        # self.individual_anime_news_block = self.soup.find("p", attrs = {"class": "title"})
 
+        # self.soup = soup
+        # self.individual_anime_news_block = news_block
+        # self.individual_anime_news_image_src = news_image
+
+        # print(self.individual_anime_news_block)
+        # print(self.individual_anime_news_image_src)
+
+        # self.individual_anime_news_block = self.soup.find("p", attrs = {"class": "title"})
         # self.individual_anime_news_cell()
-        
+    
+
     def individual_anime_news_cell(self):
         # Lists to store anime url, title, and the text of scraped data.
         anime_href = []

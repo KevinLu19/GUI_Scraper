@@ -105,6 +105,10 @@ def refresh_scrape():
 
     populate_labels(anime_news_url, anime_news_title, anime_news_body, get_new_frame)
 
+
+    selenium_obj = selenium_main.SeleniumMain()
+    selenium_obj.selenium_page_refresher()
+
 def main():
     window = ThemedTk(theme="arc")
     window.geometry("400x700")
