@@ -2,8 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 
-import News_Scraper
-import Gui_main
 import time
 import collections
 
@@ -20,23 +18,6 @@ class SeleniumMain:
 
         self.anime_news_block = self.soup.find("div", attrs={"class": "news-list mt16 mr8"})
         self.anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
-
-
-    # def selenium_main(self):
-    #     options = Options()
-    #     options.set_headless = True
-        
-    #     driver = webdriver.Firefox(options=options, executable_path="geckodriver.exe")
-    #     driver.get("https://myanimelist.net/news")
-
-    #     get_raw_html_content = driver.page_source
-    #     self.soup = BeautifulSoup(get_raw_html_content, "html.parser")
-
-    #     self.anime_news_block = self.soup.find("div", attrs={"class": "news-list mt16 mr8"})
-    #     self.anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
-
-    #     self.individual_anime_news_cell()
-    #     self.get_anime_image()
 
     def individual_anime_news_cell(self):
         # Lists to store anime url, title, and the text of scraped data.
@@ -93,7 +74,6 @@ class SeleniumMain:
             time.sleep(5)
             self.driver.refresh()
             print("URL Refreshed.")
-            Gui_main.refresh_scrape()
 
     def restart_program(self ):
         pass
