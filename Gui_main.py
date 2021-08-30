@@ -95,7 +95,7 @@ def template_news_body(frame):
     return anime_news_body
 
 def refresh_scrape():
-    anime_news_obj = News_Scraper.AnimeNews()
+    # anime_news_obj = News_Scraper.AnimeNews()
     
     get_new_frame = template_frame_widget("RoundedFrame", 10, 15, 30)
 
@@ -109,8 +109,8 @@ def refresh_scrape():
     populate_labels(anime_news_url, anime_news_title, anime_news_body, get_new_frame)
 
 
-    selenium_obj = selenium_main.SeleniumMain()
-    selenium_obj.selenium_page_refresher()
+    # selenium_obj = selenium_main.SeleniumMain()
+    # selenium_obj.selenium_page_refresher()
 
 def main():
     window = ThemedTk(theme="arc")
