@@ -38,7 +38,7 @@ def template_news_title(frame, title_of_news):
     return anime_news_title
 
 def template_news_body(frame, news_text_body):
-    anime_news_body = tk.Text(frame, font=("Calibri Bold", 10), wrap="word", highlightthickness=0, borderwidth=0, height=10)
+    anime_news_body = tk.Text(frame, font=("Calibri Bold", 10), wrap="word", highlightthickness=0, borderwidth=0, height=7)
     anime_news_body.insert("end", news_text_body)
     anime_news_body.config(state=DISABLED)
 
@@ -60,7 +60,7 @@ def get_image_byte_io(image):
 
 def populate_each_news(url, title, body, image):
     # Create new frame for each entry for the news
-    anime_news_frame = template_frame_widget("RoundedFrame", 10, 15, 30)
+    anime_news_frame = template_frame_widget("RoundedFrame", 10, 15, 10)
 
     template_news_url(anime_news_frame, url)
     template_news_title(anime_news_frame, title)
@@ -74,9 +74,13 @@ def populate_labels():
     selen_obj = selenium_main.SeleniumMain()
     sel_obj_convert_to_list = list(selen_obj.individual_anime_news_cell())
     
-    news_url = sel_obj_convert_to_list[0]
-    news_title = sel_obj_convert_to_list[1]
-    news_body = sel_obj_convert_to_list[2]
+    sel_obj_url = sel_obj_convert_to_list[0]
+    sel_obj_title = sel_obj_convert_to_list[1]
+    sel_obj_body = sel_obj_convert_to_list[2]
+
+    news_url = sel_obj_url
+    news_title = sel_obj_title
+    news_body = sel_obj_body
     news_image = selen_obj.get_anime_image()
 
     print(news_image)
@@ -88,6 +92,7 @@ def populate_labels():
         text_body_of_anime_news = body
 
         populate_each_news(url_of_anime_news, titles_of_anime_names, text_body_of_anime_news, image_photo)
+
 
 window = tkinter.Tk()
 window.geometry("400x700")

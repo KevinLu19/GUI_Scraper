@@ -41,16 +41,6 @@ class SeleniumMain:
             text_body_of_news = item.text
             news_body.append(text_body_of_news)
 
-        # one_anime_list = self.list_mapping_into_one_list_entry(anime_href, news_title, news_body)
-
-        # deque_first_entry_of_list = self.list_entry_dequeue(one_anime_list)
-
-        # # Prints latest anime news.
-        # for item in deque_first_entry_of_list:
-        #     print (item)
-
-        # return deque_first_entry_of_list
-
         return(anime_href, news_title, news_body)
 
     def list_mapping_into_one_list_entry(self, list1, list2, list3):
@@ -66,18 +56,18 @@ class SeleniumMain:
             return item
 
     def get_anime_image(self):
-
+        
         return self.anime_news_image_src.find("img")["src"]
 
     def selenium_page_refresher(self):
-        if self.driver:
+        while self.driver:
             time.sleep(5)
             self.driver.refresh()
             print("URL Refreshed.")
 
-    def restart_program(self ):
+    def restart_program(self):
         pass
 
 if __name__ == "__main__":
     sel_obj = SeleniumMain()
-    sel_obj.selenium_main()
+    print(sel_obj.get_anime_image())
