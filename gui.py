@@ -10,8 +10,9 @@ import webbrowser
 import urllib
 import io
 
-def template_frame_widget(frame_style, padding, frame_padx, frame_pady):
-    created_template = ttk.Frame(style=frame_style, padding=padding)
+def template_frame_widget(frame_style, padding, frame_padx, frame_pady, outer_frame):
+    # created_template = ttk.Frame(style=frame_style, padding=padding)
+    created_template = ttk.Frame(outer_frame, style=frame_style, padding=padding)
     created_template.pack(padx=frame_padx, pady=frame_pady)
 
     return created_template
@@ -58,9 +59,13 @@ def get_image_byte_io(image):
 
     return photo
 
-def populate_each_news(url, title, body, image):
+def populate_each_news(url, title, body, image, outer_frame):
+    padding = 10
+    frame_padx = 12
+    frame_pady = 10
+
     # Create new frame for each entry for the news
-    anime_news_frame = template_frame_widget("RoundedFrame", 10, 15, 10)
+    anime_news_frame = template_frame_widget("RoundedFrame", padding, frame_padx, frame_pady, outer_frame)
 
     template_news_url(anime_news_frame, url)
     template_news_title(anime_news_frame, title)
@@ -70,7 +75,7 @@ def populate_each_news(url, title, body, image):
     anime_news_image.image = image
     anime_news_image.pack(side=LEFT, anchor=W, padx=10)
 
-def populate_labels():
+def populate_labels(outer_frame):
     selen_obj = selenium_main.SeleniumMain()
     sel_obj_convert_to_list = list(selen_obj.individual_anime_news_cell())
     
@@ -91,11 +96,16 @@ def populate_labels():
         titles_of_anime_names = title
         text_body_of_anime_news = body
 
-        populate_each_news(url_of_anime_news, titles_of_anime_names, text_body_of_anime_news, image_photo)
+        populate_each_news(url_of_anime_news, titles_of_anime_names, text_body_of_anime_news, image_photo, outer_frame)
 
+def onFrameConfigure(canvas):
+    '''Reset the scroll region to encompass the inner frame'''
+    canvas.configure(scrollregion=canvas.bbox("all"))
 
 window = tkinter.Tk()
-window.geometry("400x700")
+# Old window resolution. Can't figure out how to not make inner frames from streching after added scrollbar so just increased the window gemotery as a band-aid fix.
+# window.geometry("400x700")
+window.geometry("720x600")
 window.title("Anime News")
 window.configure(bg="white")
 window.iconbitmap("favicon.ico")
@@ -112,6 +122,18 @@ style.element_create("RoundedFrame",
 style.layout("RoundedFrame",
             [("RoundedFrame", {"sticky": "nsew"})])
 
-populate_labels()
+canvas = tk.Canvas(window)
+outer_frame = tk.Frame(canvas, background="#ffffff")
+
+vertical_scroll_bar = tk.Scrollbar(window, orient="vertical", command=canvas.yview)
+canvas.configure(yscrollcommand=vertical_scroll_bar.set)
+
+vertical_scroll_bar.pack(side="right", fill="y")
+canvas.pack(side="left", fill="both", expand=True)
+canvas.create_window((4,4), window=outer_frame, anchor="nw")
+
+outer_frame.bind("<Configure>", lambda event, canvas=canvas: onFrameConfigure(canvas))
+
+populate_labels(outer_frame)
 
 window.mainloop()

@@ -56,11 +56,11 @@ class SeleniumMain:
             return item
 
     def get_anime_image(self):
-        
+
         return self.anime_news_image_src.find("img")["src"]
 
     def selenium_page_refresher(self):
-        while self.driver:
+        if self.driver:
             time.sleep(5)
             self.driver.refresh()
             print("URL Refreshed.")
