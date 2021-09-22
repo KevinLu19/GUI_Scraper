@@ -88,7 +88,7 @@ def populate_labels(outer_frame):
     news_body = sel_obj_body
     news_image = selen_obj.get_anime_image()
 
-    print(news_image)
+    # print(news_image)
     image_photo = get_image_byte_io(news_image)
 
     for (url, title, body) in zip(news_url, news_title, news_body):

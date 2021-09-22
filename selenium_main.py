@@ -17,7 +17,9 @@ class SeleniumMain:
         self.soup = BeautifulSoup(get_raw_html_content, "html.parser")
 
         self.anime_news_block = self.soup.find("div", attrs={"class": "news-list mt16 mr8"})
+        # self.anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
         self.anime_news_image_src = self.soup.find("a", attrs= {"class": "image-link"})
+       
 
     def individual_anime_news_cell(self):
         # Lists to store anime url, title, and the text of scraped data.
