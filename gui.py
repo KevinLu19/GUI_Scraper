@@ -49,13 +49,14 @@ def template_news_body(frame, news_text_body):
 
 # Turning image into byte in order to be used via ImageTK.
 def get_image_byte_io(image):
-
+    
     image_url_open = urllib.request.urlopen(image)
     raw_data = image_url_open.read()
     image_url_open.close()
 
     image = Image.open(io.BytesIO(raw_data))
     photo = ImageTk.PhotoImage(image)
+    
 
     return photo
 
@@ -82,19 +83,23 @@ def populate_labels(outer_frame):
     sel_obj_url = sel_obj_convert_to_list[0]
     sel_obj_title = sel_obj_convert_to_list[1]
     sel_obj_body = sel_obj_convert_to_list[2]
+    sel_obj_images = sel_obj_convert_to_list[3]
+
+    # print (sel_obj_images)
 
     news_url = sel_obj_url
     news_title = sel_obj_title
     news_body = sel_obj_body
-    news_image = selen_obj.get_anime_image()
-
-    # print(news_image)
-    image_photo = get_image_byte_io(news_image)
-
-    for (url, title, body) in zip(news_url, news_title, news_body):
+    # news_image = selen_obj.get_anime_image()
+    news_image = sel_obj_images
+   
+    for (url, title, body, image) in zip(news_url, news_title, news_body, news_image):
         url_of_anime_news = url
         titles_of_anime_names = title
         text_body_of_anime_news = body
+
+        image_photo = get_image_byte_io(image)
+
 
         populate_each_news(url_of_anime_news, titles_of_anime_names, text_body_of_anime_news, image_photo, outer_frame)
 

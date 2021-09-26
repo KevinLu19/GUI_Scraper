@@ -26,6 +26,7 @@ class SeleniumMain:
         anime_href = []
         news_title = []
         news_body = []
+        news_image = []
 
         for item in self.anime_news_block.find_all("p", attrs = {"class" : "title"}):
             # Gets the URL from news
@@ -42,8 +43,10 @@ class SeleniumMain:
         for item in self.soup.find_all("div", attrs = {"class": "text"}):
             text_body_of_news = item.text
             news_body.append(text_body_of_news)
+        
+        image_list = self.get_anime_image(news_image)
 
-        return(anime_href, news_title, news_body)
+        return(anime_href, news_title, news_body, image_list)
 
     def list_mapping_into_one_list_entry(self, list1, list2, list3):
         return list(map(lambda x,y,z: [x,y,z], list1, list2, list3))
@@ -57,9 +60,16 @@ class SeleniumMain:
         for item in deque_list:
             return item
 
-    def get_anime_image(self):
+    def get_anime_image(self, image_container):
+        # print (self.anime_news_block)
 
-        return self.anime_news_image_src.find("img")["src"]
+        for images in self.soup.find_all("img", attrs={"class": "image lazyloaded"}):
+            image_container.append(images["src"])
+            
+
+        return image_container
+
+        # return self.anime_news_image_src.find("img")["src"]
 
     def selenium_page_refresher(self):
         if self.driver:
@@ -72,4 +82,5 @@ class SeleniumMain:
 
 if __name__ == "__main__":
     sel_obj = SeleniumMain()
-    print(sel_obj.get_anime_image())
+    # print(sel_obj.get_anime_image())
+    print(sel_obj.individual_anime_news_cell())
